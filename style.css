@@ -25,7 +25,7 @@ header p {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px; /* Ampliato il contenitore per dare più spazio ai grafici */
     margin: 2rem auto;
     padding: 0 1rem;
 }
@@ -45,10 +45,10 @@ header p {
     margin-top: 0;
 }
 
-/* Griglia Immagini G1 e G2 */
+/* Griglia Immagini G1 e G2 - Ottimizzata per formati panoramici */
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* Riquadri più larghi */
     gap: 1.5rem;
     margin-top: 1rem;
 }
@@ -60,6 +60,7 @@ header p {
     background: #fff;
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s;
+    padding: 12px; /* Margine interno per non far toccare l'immagine ai bordi */
 }
 
 .card:hover {
@@ -67,14 +68,18 @@ header p {
     box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
+/* Regole Immagine: Mantiene proporzioni intere senza tagliare */
 .card img {
     width: 100%;
-    height: 160px;
-    object-fit: cover;
+    height: auto;          /* L'altezza si regola automaticamente */
+    max-height: 550px;     /* Permette alle immagini grandi di mostrate chiaramente */
+    object-fit: contain;   /* Mostra l'immagine INTERA senza ritagli */
+    display: block;
+    margin: 0 auto;
 }
 
 .card p {
-    margin: 0.8rem 0;
+    margin: 0.8rem 0 0.2rem 0;
     font-weight: 600;
     color: #555;
 }
@@ -119,43 +124,4 @@ header p {
     content: '';
     position: absolute;
     bottom: -15px;
-    left: 30px;
-    border-width: 15px 15px 0 0;
-    border-style: solid;
-    border-color: #e8f4f8 transparent transparent transparent;
-    display: block;
-    width: 0;
-}
-
-.speech-bubble::before {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 29px;
-    border-width: 17px 17px 0 0;
-    border-style: solid;
-    border-color: #3498db transparent transparent transparent;
-    display: block;
-    width: 0;
-}
-
-.feedback-text {
-    margin: 0 0 0.8rem 0;
-    font-style: italic;
-    color: #2c3e50;
-}
-
-.feedback-author {
-    display: block;
-    text-align: right;
-    font-weight: bold;
-    font-size: 0.85rem;
-    color: #7f8c8d;
-}
-
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-}
+    left:

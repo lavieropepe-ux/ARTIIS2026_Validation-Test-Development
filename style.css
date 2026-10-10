@@ -1,161 +1,179 @@
-/* Layout Generale */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ==========================================================================
+   RESET & VARIABILI GLOBALI
+   ========================================================================== */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
 }
 
+:root {
+    --bg-page: #0f172a;              /* Sfondo blu scuro */
+    --section-bg: rgba(30, 41, 59, 0.7); /* Contenitore sezione trasparente */
+    --text-color: #f1f5f9;           /* Testo titoli */
+    --text-dark: #1e293b;            /* Testo dentro le card */
+    --card-bg: #ffffff;              /* Box bianche */
+    --hover-bg: #e0f2fe;             /* Sfondo azzurro al passaggio del mouse */
+    --hover-border: #38bdf8;         /* Bordo azzurro luminoso */
+    --border-color: #cbd5e1;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 24px rgba(56, 189, 248, 0.35);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 40px;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 header {
-    background-color: #2c3e50;
-    color: white;
+    background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
+    color: #ffffff;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 header p {
-    margin-top: 0.5rem;
-    opacity: 0.8;
+    font-size: 1.1rem;
+    color: #bae6fd;
 }
 
+/* ==========================================================================
+   LAYOUT PRINCIPALE & SEZIONI
+   ========================================================================== */
 .container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 1400px; /* Ampliato il contenitore principale per dare spazio alle card più grandi */
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.group-section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+.group-section, .feedback-section {
+    background: var(--section-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
 }
 
-.group-section h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 0.5rem;
-    margin-top: 0;
+h2 {
+    font-size: 1.4rem;
+    color: #38bdf8;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Griglia Immagini G1 e G2 */
+/* ==========================================================================
+   GRID IMMAGINI E CARD (Aumentate e proporzionate a 1999 x 951)
+   ========================================================================== */
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
+    /* Ingrandite le colonne: da 180px a 320px minimi */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
 }
 
 .card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px;
     overflow: hidden;
-    background: #fff;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .card img {
     width: 100%;
-    height: 160px;
-    object-fit: cover;
+    height: auto;
+    /* Imposta l'esatto rapporto di forma 1999x951 per prevenire tagli o distorsioni */
+    aspect-ratio: 1999 / 951;
+    object-fit: contain;
+    border-radius: 6px;
+    display: block;
+    transform: none !important; /* Nessun effetto zoom */
 }
 
-.card p {
-    margin: 0.8rem 0;
-    font-weight: 600;
-    color: #555;
+/* HOVER CARD: Diventa azzurra (No Zoom) */
+.card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--hover-border);
+    box-shadow: var(--shadow-hover);
+    transform: none !important;
 }
 
-/* Sezione Feedback */
-.feedback-section {
-    background: #ffffff;
-    padding: 2rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-top: 3rem;
-}
-
-.feedback-section h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #2ecc71;
-    padding-bottom: 0.5rem;
-    margin-top: 0;
-}
-
+/* ==========================================================================
+   SEZIONE FEEDBACK
+   ========================================================================== */
 .feedback-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: space-around;
-    margin-top: 2rem;
+    flex-direction: column;
+    gap: 16px;
 }
 
-/* Stile Nuvoletta di Feedback (Speech Bubble) */
 .speech-bubble {
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 18px 22px;
     position: relative;
-    background: #e8f4f8;
-    border-radius: 15px;
-    padding: 1.5rem;
-    width: 280px;
-    border: 2px solid #3498db;
-    box-shadow: 2px 4px 8px rgba(0,0,0,0.05);
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
 }
 
-/* Coda della Nuvoletta */
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 30px;
-    border-width: 15px 15px 0 0;
-    border-style: solid;
-    border-color: #e8f4f8 transparent transparent transparent;
-    display: block;
-    width: 0;
-}
-
-.speech-bubble::before {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 29px;
-    border-width: 17px 17px 0 0;
-    border-style: solid;
-    border-color: #3498db transparent transparent transparent;
-    display: block;
-    width: 0;
+.speech-bubble:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--hover-border);
+    box-shadow: var(--shadow-hover);
+    transform: none !important;
 }
 
 .feedback-text {
-    margin: 0 0 0.8rem 0;
     font-style: italic;
-    color: #2c3e50;
+    color: #334155;
+    margin-bottom: 8px;
 }
 
 .feedback-author {
     display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0284c7;
     text-align: right;
-    font-weight: bold;
-    font-size: 0.85rem;
-    color: #7f8c8d;
 }
 
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    color: #7f8c8d;
-    font-size: 0.9rem;
+/* ==========================================================================
+   RESPONSIVE (Mobile)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .image-grid {
+        grid-template-columns: 1fr; /* Una colonna per schermo su dispositivi mobili */
+        gap: 14px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
 }

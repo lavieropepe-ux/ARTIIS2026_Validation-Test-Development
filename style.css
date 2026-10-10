@@ -85,8 +85,8 @@ h2 {
    ========================================================================== */
 .image-grid {
     display: grid;
-    /* Raddoppiata la larghezza minima della colonna: da 320px a 640px */
-    grid-template-columns: repeat(auto-fill, minmax(640px, 1fr));
+    /* Impostato a 460px: perfetto per avere box grandi e nitide senza tagli */
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
     gap: 24px;
 }
 

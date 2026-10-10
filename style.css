@@ -1,127 +1,80 @@
-/* Layout Generale */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ==========================================================================
+   RESET & VARIABILI GLOBALI
+   ========================================================================== */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
 }
 
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
+    --primary-color: #0284c7;        /* Azzurro principale */
+    --hover-bg: #e0f2fe;             /* Azzurro chiaro per hover */
+    --hover-border: #38bdf8;         /* Bordo azzurro luminoso */
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 20px rgba(2, 132, 199, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 40px;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 header {
-    background-color: #2c3e50;
-    color: white;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 header p {
-    margin-top: 0.5rem;
-    opacity: 0.8;
+    font-size: 1.1rem;
+    color: #94a3b8;
 }
 
+/* ==========================================================================
+   LAYOUT PRINCIPALE
+   ========================================================================== */
 .container {
-    max-width: 1400px; /* Ampliato il contenitore per dare più spazio ai grafici */
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.group-section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.group-section h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 0.5rem;
-    margin-top: 0;
-}
-
-/* Griglia Immagini G1 e G2 - Ottimizzata per formati panoramici */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* Riquadri più larghi */
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    padding: 12px; /* Margine interno per non far toccare l'immagine ai bordi */
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-/* Regole Immagine: Mantiene proporzioni intere senza tagliare */
-.card img {
-    width: 100%;
-    height: auto;          /* L'altezza si regola automaticamente */
-    max-height: 550px;     /* Permette alle immagini grandi di mostrate chiaramente */
-    object-fit: contain;   /* Mostra l'immagine INTERA senza ritagli */
-    display: block;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.card p {
-    margin: 0.8rem 0 0.2rem 0;
-    font-weight: 600;
-    color: #555;
-}
-
-/* Sezione Feedback */
-.feedback-section {
+.group-section, .feedback-section {
     background: #ffffff;
-    padding: 2rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-top: 3rem;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 
-.feedback-section h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #2ecc71;
-    padding-bottom: 0.5rem;
-    margin-top: 0;
+h2 {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f1f5f9;
 }
 
-.feedback-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: space-around;
-    margin-top: 2rem;
-}
-
-/* Stile Nuvoletta di Feedback (Speech Bubble) */
-.speech-bubble {
-    position: relative;
-    background: #e8f4f8;
-    border-radius: 15px;
-    padding: 1.5rem;
-    width: 280px;
-    border: 2px solid #3498db;
-    box-shadow: 2px 4px 8px rgba(0,0,0,0.05);
-}
-
-/* Coda della Nuvoletta */
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left:
+/* ==========================================================================
+   GRID IMMAGINI E CARD

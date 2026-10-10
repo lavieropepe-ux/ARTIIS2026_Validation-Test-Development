@@ -90,67 +90,19 @@ h2 {
     gap: 24px;
 }
 
-/* Modifica le righe della .card */
 .card {
     background-color: var(--card-bg);
     color: var(--text-dark);
-    border: 2px solid #38bdf8; /* Bordo azzurro di base */
+    border: 2px solid var(--border-color);
     border-radius: 12px;
     padding: 16px;
     overflow: hidden;
-    position: relative;
     transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
-    /* ANIMAZIONE BAGLIORE/PARTICELLE LUMINOSE SUL BORDO */
-    animation: particleGlow 3s infinite alternate ease-in-out;
-}
-
-/* Effetto di luce scintillante/particellare al passaggio del mouse o continuo */
-.card:hover {
-    background-color: var(--hover-bg);
-    border-color: #00f0ff !important;
-    animation: particleGlowHover 1.5s infinite alternate ease-in-out;
-}
-
-/* Nuove righe da aggiungere in fondo a style.css (Definizione delle animazioni) */
-@keyframes particleGlow {
-    0% {
-        border-color: #38bdf8;
-        box-shadow: 0 0 10px rgba(56, 189, 248, 0.4),
-                    0 0 20px rgba(56, 189, 248, 0.2),
-                    inset 0 0 8px rgba(56, 189, 248, 0.2);
-    }
-    50% {
-        border-color: #818cf8;
-        box-shadow: 0 0 18px rgba(129, 140, 248, 0.7),
-                    0 0 30px rgba(56, 189, 248, 0.4),
-                    inset 0 0 12px rgba(129, 140, 248, 0.3);
-    }
-    100% {
-        border-color: #38bdf8;
-        box-shadow: 0 0 12px rgba(56, 189, 248, 0.5),
-                    0 0 25px rgba(0, 240, 255, 0.3),
-                    inset 0 0 10px rgba(0, 240, 255, 0.2);
-    }
-}
-
-@keyframes particleGlowHover {
-    0% {
-        box-shadow: 0 0 15px #00f0ff,
-                    0 0 30px rgba(0, 240, 255, 0.6),
-                    inset 0 0 15px rgba(0, 240, 255, 0.4);
-    }
-    100% {
-        box-shadow: 0 0 25px #38bdf8,
-                    0 0 50px rgba(56, 189, 248, 0.8),
-                    inset 0 0 20px rgba(56, 189, 248, 0.5);
-    }
-}
 }
 
 .card img {

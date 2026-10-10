@@ -1,197 +1,356 @@
 /* ==========================================================================
+
    RESET & VARIABILI GLOBALI
+
    ========================================================================== */
-* {
+
+{
     box-sizing: border-box;
+
     margin: 0;
+
     padding: 0;
+
 }
+
+
 
 :root {
-    --bg-page: #eef2f6;               /* Sfondo chiaro grigio/azzurrino */
-    --header-bg: #2b3e50;             /* Sfondo scuro per l'header */
-    --card-bg: #ffffff;               /* Sfondo bianco per le sezioni e card */
-    --title-color: #2b3e50;           /* Colore scuro per i titoli delle sezioni */
-    --text-color: #334155;            /* Testo generale */
-    --border-color: #e2e8f0;          /* Bordo tenue grigio per i riquadri */
-    --line-color: #38bdf8;            /* Riga azzurra sotto i titoli */
-    --hover-bg: #f0f9ff;              /* Azzurrino chiaro all'hover */
-    --hover-border: #0284c7;          /* Bordo azzurro all'hover */
-    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    --bg-page: #0f172a;              /* Sfondo blu scuro */
+
+    --section-bg: rgba(30, 41, 59, 0.7); /* Contenitore sezione trasparente */
+
+    --text-color: #f1f5f9;           /* Testo titoli */
+
+    --text-dark: #1e293b;            /* Testo dentro le card */
+
+    --card-bg: #ffffff;              /* Box bianche */
+
+    --hover-bg: #e0f2fe;             /* Sfondo azzurro al passaggio del mouse */
+
+    --hover-border: #38bdf8;         /* Bordo azzurro luminoso */
+
+    --border-color: #cbd5e1;
+
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+
+    --shadow-hover: 0 8px 24px rgba(56, 189, 248, 0.35);
+
 }
+
+
 
 body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     background-color: var(--bg-page);
+
     color: var(--text-color);
+
     line-height: 1.6;
+
     padding-bottom: 40px;
+
 }
+
+
 
 /* ==========================================================================
-   HEADER (Stile dello screenshot)
+
+   HEADER
+
    ========================================================================== */
+
 header {
-    background-color: var(--header-bg);
+
+    background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
+
     color: #ffffff;
-    padding: 2.5rem 2rem;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    text-align: center;
+
+    padding: 2.5rem 1rem;
+
+    margin-bottom: 2rem;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
 }
 
-.header-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    text-align: right; /* Testo allineato a destra come da screenshot */
-}
+
 
 header h1 {
-    font-size: 2.4rem;
+
+    font-size: 2.2rem;
+
     font-weight: 700;
-    margin-bottom: 0.3rem;
-    letter-spacing: -0.5px;
+
+    margin-bottom: 0.5rem;
+
 }
+
+
 
 header p {
+
     font-size: 1.1rem;
-    color: #cbd5e1;
-    font-weight: 300;
+
+    color: #bae6fd;
+
 }
 
+
+
 /* ==========================================================================
+
    LAYOUT PRINCIPALE & SEZIONI
+
    ========================================================================== */
+
 .container {
-    max-width: 1400px;
+
+    max-width: 1400px; /* Ampliato il contenitore principale per dare spazio alle card più grandi */
+
     margin: 0 auto;
+
     padding: 0 20px;
+
 }
+
+
 
 .group-section, .feedback-section {
-    background: var(--card-bg);
+
+    background: var(--section-bg);
+
     border-radius: 12px;
-    padding: 28px 32px;
-    margin-bottom: 35px;
-    box-shadow: var(--shadow-card);
+
+    padding: 24px;
+
+    margin-bottom: 30px;
+
+    box-shadow: var(--shadow-sm);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(8px);
+
 }
+
+
 
 h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--title-color);
-    margin-bottom: 24px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--line-color); /* Linea azzurra di separazione */
+
+    font-size: 1.4rem;
+
+    color: #38bdf8;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
 }
 
+
+
 /* ==========================================================================
-   GRID IMMAGINI E CARD (Come nello screenshot)
+
+   GRID IMMAGINI E CARD (Aumentate e proporzionate a 1999 x 951)
+
    ========================================================================== */
+
 .image-grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
+
+    /* Ingrandite le colonne: da 180px a 320px minimi */
+
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    gap: 20px;
+
 }
+
+
 
 .card {
+
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 16px;
+
+    color: var(--text-dark);
+
+    border: 2px solid var(--border-color);
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    overflow: hidden;
+
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
-    justify-content: space-between;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+
+    justify-content: center;
+
+    cursor: pointer;
+
 }
 
-.card:hover {
-    border-color: var(--hover-border);
-    background-color: var(--hover-bg);
-    box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12);
-}
+
 
 .card img {
+
     width: 100%;
+
     height: auto;
+
+    /* Imposta l'esatto rapporto di forma 1999x951 per prevenire tagli o distorsioni */
+
     aspect-ratio: 1999 / 951;
+
     object-fit: contain;
+
     border-radius: 6px;
+
     display: block;
-    margin-bottom: 12px;
+
+    transform: none !important; /* Nessun effetto zoom */
+
 }
 
-.card-caption {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--title-color);
-    margin-top: 8px;
-    text-align: center;
+
+
+/* HOVER CARD: Diventa azzurra (No Zoom) */
+
+.card:hover {
+
+    background-color: var(--hover-bg);
+
+    border-color: var(--hover-border);
+
+    box-shadow: var(--shadow-hover);
+
+    transform: none !important;
+
 }
+
+
 
 /* ==========================================================================
-   SEZIONE FEEDBACK E VALUTAZIONI (RIQUADRI SEPARATI)
+
+   SEZIONE FEEDBACK
+
    ========================================================================== */
+
 .feedback-container {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 16px;
+
 }
+
+
 
 .speech-bubble {
-    background-color: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 20px 24px;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
+    background-color: var(--card-bg);
+
+    color: var(--text-dark);
+
+    border: 2px solid var(--border-color);
+
+    border-radius: 12px;
+
+    padding: 18px 22px;
+
+    position: relative;
+
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+    cursor: pointer;
+
 }
+
+
 
 .speech-bubble:hover {
+
     background-color: var(--hover-bg);
+
     border-color: var(--hover-border);
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+
+    box-shadow: var(--shadow-hover);
+
+    transform: none !important;
+
 }
+
+
 
 .feedback-text {
+
     font-style: italic;
-    color: #475569;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
+
+    color: #334155;
+
+    margin-bottom: 8px;
+
 }
+
+
 
 .feedback-author {
+
     display: block;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #0284c7;
-    text-align: right;
-}
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-footer {
-    text-align: center;
-    color: #64748b;
+    font-weight: 600;
+
     font-size: 0.9rem;
-    margin-top: 40px;
+
+    color: #0284c7;
+
+    text-align: right;
+
 }
 
+
+
 /* ==========================================================================
-   RESPONSIVE
+
+   RESPONSIVE (Mobile)
+
    ========================================================================== */
-@media (max-width: 768px) {
-    .header-content {
-        text-align: center;
-    }
-    
+
+@media (max-width: 600px) {
+
     .image-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns: 1fr; /* Una colonna per schermo su dispositivi mobili */
+
+        gap: 14px;
+
     }
+
+
 
     header h1 {
-        font-size: 1.8rem;
+
+        font-size: 1.6rem;
+
     }
+
 }

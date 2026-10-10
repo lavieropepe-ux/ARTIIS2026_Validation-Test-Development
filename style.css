@@ -8,13 +8,13 @@
 }
 
 :root {
-    --bg-page: #0f172a;              /* Sfondo generale blu scuro */
-    --section-bg: rgba(30, 41, 59, 0.7); /* Sfondo blu medio trasparente per le sezioni */
-    --text-color: #f1f5f9;           /* Testo chiaro per i titoli di pagina */
-    --text-dark: #1e293b;            /* Testo scuro per l'interno delle box bianche */
-    --card-bg: #ffffff;              /* Box e nuvolette bianche */
-    --hover-bg: #e0f2fe;             /* Azzurro chiaro per lo stato hover */
-    --hover-border: #38bdf8;         /* Bordo azzurro luminoso al passaggio del mouse */
+    --bg-page: #0f172a;              /* Sfondo blu scuro */
+    --section-bg: rgba(30, 41, 59, 0.7); /* Contenitore sezione blu trasparente */
+    --text-color: #f1f5f9;           /* Testo titoli */
+    --text-dark: #1e293b;            /* Testo dentro le card */
+    --card-bg: #ffffff;              /* Box bianche */
+    --hover-bg: #e0f2fe;             /* Azzurro chiaro al passaggio del mouse */
+    --hover-border: #38bdf8;         /* Bordo azzurro luminoso */
     --border-color: #cbd5e1;
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 8px 24px rgba(56, 189, 248, 0.35);
@@ -80,7 +80,7 @@ h2 {
 }
 
 /* ==========================================================================
-   GRID IMMAGINI E CARD (BIANCHE -> AZZURRE SU HOVER)
+   GRID IMMAGINI E CARD (Dimensioni ripristinate)
    ========================================================================== */
 .image-grid {
     display: grid;
@@ -89,7 +89,7 @@ h2 {
 }
 
 .card {
-    background-color: var(--card-bg); /* Box Bianca */
+    background-color: var(--card-bg);
     color: var(--text-dark);
     border: 2px solid var(--border-color);
     border-radius: 10px;
@@ -99,19 +99,22 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
+/* Grafici e Immagini ripristinati alle proporzioni originali */
 .card img {
     width: 100%;
-    height: 140px;
-    object-fit: cover;
+    height: auto;               /* Permette all'immagine di mostrare le dimensioni corrette */
+    max-height: 220px;          /* Evita che siano schiacciate verticalmente */
+    object-fit: contain;        /* Mantiene le proporzioni complete del grafico senza tagliarlo */
     border-radius: 6px;
     display: block;
-    transform: none !important; /* Nessuno zoom sull'immagine */
+    transform: none !important; /* Disattiva lo zoom */
 }
 
-/* Hover Card: Sfondo e Bordo Azzurro (Senza Zoom) */
+/* HOVER CARD: Diventa azzurra senza ingrandirsi */
 .card:hover {
     background-color: var(--hover-bg);
     border-color: var(--hover-border);
@@ -120,7 +123,7 @@ h2 {
 }
 
 /* ==========================================================================
-   SEZIONE FEEDBACK (NUVOLETTE BIANCHE -> AZZURRE SU HOVER)
+   SEZIONE FEEDBACK
    ========================================================================== */
 .feedback-container {
     display: flex;
@@ -129,7 +132,7 @@ h2 {
 }
 
 .speech-bubble {
-    background-color: var(--card-bg); /* Nuvoletta Bianca */
+    background-color: var(--card-bg);
     color: var(--text-dark);
     border: 2px solid var(--border-color);
     border-radius: 12px;
@@ -139,7 +142,6 @@ h2 {
     cursor: pointer;
 }
 
-/* Hover Nuvoletta: Sfondo Azzurro */
 .speech-bubble:hover {
     background-color: var(--hover-bg);
     border-color: var(--hover-border);
@@ -161,4 +163,16 @@ h2 {
     text-align: right;
 }
 
-/* =================================
+/* ==========================================================================
+   RESPONSIVE (Mobile)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .image-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+}

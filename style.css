@@ -8,20 +8,21 @@
 }
 
 :root {
-    --bg-color: #f8fafc;
-    --text-color: #1e293b;
-    --primary-color: #0284c7;        /* Azzurro principale */
-    --hover-bg: #e0f2fe;             /* Azzurro chiaro per hover */
-    --hover-border: #38bdf8;         /* Bordo azzurro luminoso */
-    --card-bg: #ffffff;
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-hover: 0 8px 20px rgba(2, 132, 199, 0.15);
+    --bg-page: #0f172a;              /* Sfondo generale blu scuro */
+    --section-bg: rgba(30, 41, 59, 0.7); /* Sfondo blu medio trasparente per le sezioni */
+    --text-color: #f1f5f9;           /* Testo chiaro per i titoli di pagina */
+    --text-dark: #1e293b;            /* Testo scuro per l'interno delle box bianche */
+    --card-bg: #ffffff;              /* Box e nuvolette bianche */
+    --hover-bg: #e0f2fe;             /* Azzurro chiaro per lo stato hover */
+    --hover-border: #38bdf8;         /* Bordo azzurro luminoso al passaggio del mouse */
+    --border-color: #cbd5e1;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 24px rgba(56, 189, 248, 0.35);
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
+    background-color: var(--bg-page);
     color: var(--text-color);
     line-height: 1.6;
     padding-bottom: 40px;
@@ -31,12 +32,13 @@ body {
    HEADER
    ========================================================================== */
 header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
     color: #ffffff;
     text-align: center;
     padding: 2.5rem 1rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 header h1 {
@@ -47,11 +49,11 @@ header h1 {
 
 header p {
     font-size: 1.1rem;
-    color: #94a3b8;
+    color: #bae6fd;
 }
 
 /* ==========================================================================
-   LAYOUT PRINCIPALE
+   LAYOUT PRINCIPALE & SEZIONI
    ========================================================================== */
 .container {
     max-width: 1200px;
@@ -60,21 +62,103 @@ header p {
 }
 
 .group-section, .feedback-section {
-    background: #ffffff;
+    background: var(--section-bg);
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 30px;
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
 }
 
 h2 {
     font-size: 1.4rem;
-    color: var(--text-color);
+    color: #38bdf8;
     margin-bottom: 20px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #f1f5f9;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
-   GRID IMMAGINI E CARD
+   GRID IMMAGINI E CARD (BIANCHE -> AZZURRE SU HOVER)
+   ========================================================================== */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background-color: var(--card-bg); /* Box Bianca */
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    transform: none !important; /* Nessuno zoom sull'immagine */
+}
+
+/* Hover Card: Sfondo e Bordo Azzurro (Senza Zoom) */
+.card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--hover-border);
+    box-shadow: var(--shadow-hover);
+    transform: none !important;
+}
+
+/* ==========================================================================
+   SEZIONE FEEDBACK (NUVOLETTE BIANCHE -> AZZURRE SU HOVER)
+   ========================================================================== */
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.speech-bubble {
+    background-color: var(--card-bg); /* Nuvoletta Bianca */
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 18px 22px;
+    position: relative;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+/* Hover Nuvoletta: Sfondo Azzurro */
+.speech-bubble:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--hover-border);
+    box-shadow: var(--shadow-hover);
+    transform: none !important;
+}
+
+.feedback-text {
+    font-style: italic;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.feedback-author {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0284c7;
+    text-align: right;
+}
+
+/* =================================
